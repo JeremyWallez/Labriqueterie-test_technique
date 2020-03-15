@@ -1,0 +1,14 @@
+TODOLIST en :node JS + react (saga redux)
+
+HOST le tout sur HEROKU
+
+A implementer:
+  _ Lister les tâches
+  _ Valider une tâches
+  _ Travailler sur plusieurs listes
+  _ Recevoir un mail quand tâche fini (un peu useless vue que je valide quand tâche est faite)
+  _ Recevoir un mail quand tâche bientot a rendre et non finie.
+  _ Travailler a plusieurs sur une liste ? (liste commune d'équipe)
+  _ Rechercher dans une liste
+  _ Archive des tâches finies par liste / par user / par team
+  _ Other things ???
