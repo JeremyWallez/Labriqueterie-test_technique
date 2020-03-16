@@ -91,7 +91,7 @@ class HomeUserPage extends Component {
       </div>
       <div className="homebutton">
         <button onClick={this.retrieveList}> See all your todo lists </button>
-        <button onClick={this.addList}> et beh son pere </button>
+        <button onClick={this.addList}> Create a todo list </button>
       </div>
       <div className="homescreen">
         {

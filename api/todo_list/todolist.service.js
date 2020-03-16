@@ -4,6 +4,7 @@ const TodoList = db.TodoList
 module.exports = {
   create,
   getAll,
+  update,
   delete: _delete
 }
 
@@ -16,6 +17,23 @@ async function create({userId, title}) {
       throw 'List name "' + title + '" is already taken'
     }
     const todoList = new TodoList({userId: userId, title: title})
+    await todoList.save()
+  } catch (error) {
+    throw error
+  }
+}
+
+async function update({userId, title}) {
+  if (!userId || !title) {
+    throw "No userId or title provided for: update(todolist)"
+  }
+  try {
+    const todoList = TodoList.findOne({userId: userId, ttle: title})
+
+    if (!todoList) {
+      throw "No todolist found for userId " + userId + " with title " + title
+    }
+    todoList.title = title
     await todoList.save()
   } catch (error) {
     throw error

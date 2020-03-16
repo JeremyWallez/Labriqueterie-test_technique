@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Schema = moongoose.Schema;
+const Schema = mongoose.Schema
 
 const schema = new Schema({
   listId: {
@@ -18,7 +18,11 @@ const schema = new Schema({
   endDate: {
     type: Date,
     required: true
+  },
+  _done: {
+    type: Boolean,
+    default: false,
   }
 })
 
-module.exports = moongoose.model('Task', schema)
+module.exports = mongoose.model('Task', schema)

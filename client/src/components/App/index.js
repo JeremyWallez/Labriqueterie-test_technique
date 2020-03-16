@@ -23,7 +23,7 @@ class App extends Component {
         }/>
           <Route path = "/" exact strict render = {
               () => {
-                return (<h1> Welcome to the jungle </h1>)
+                return (<Redirect to='/signin' />)
               }
           }/>
         </div>

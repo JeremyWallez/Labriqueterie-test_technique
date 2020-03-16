@@ -1,5 +1,5 @@
 const express = require('express')
-//const jwt = require('utils/jwt')
+//const jwt = require('utils/jwt') TODO: uncomment after testing is DONE
 const cors = require('cors')
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
@@ -19,10 +19,10 @@ app.get('/', (req, res) => {
   res.send("hello hello")
 })
 
-//app.use(jwt())
+//app.use(jwt()) TODO: uncomment after testing is DONE
 app.use('/users', require('./users/user.controller'))
 app.use('/todolists', require('./todo_list/todolist.controller'))
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`et ici aussi sur port = ${process.env.PORT}`)
 })

@@ -15,7 +15,7 @@ class SignInPage extends Component {
       'password': this.props.user.password
     }
 console.log(jsonBody)
-    fetch('https://fierce-escarpment-98060.herokuapp.com/users/authenticate', {
+    fetch('http://localhost:8080/users/authenticate', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

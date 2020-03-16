@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-/*var uniqueValidator = require('mongoose-unique-validator')*/
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -42,8 +41,6 @@ const schema = new Schema({
     },
 })
 
-/*schema.plugin(uniqueValidator, {message: 'is already taken'})*/   /* Remove the commentaries related to
-                                                                    it ( == {unique && var} ) to reimplement unique check here again */
 schema.set('toJSON', { virtuals: true })
 
 module.exports = mongoose.model('User', schema)

@@ -1,8 +1,7 @@
-//const config = require('config.json');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const db = require('utils/db');
-const User = db.User;
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+const db = require('utils/db')
+const User = db.User
 
 module.exports = {
     authenticate,
@@ -20,11 +19,11 @@ async function authenticate({ username, password }) {
     }
     console.log('before await')
     try {
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username })
       console.log('after await')
       if (user && bcrypt.compareSync(password, user.hash)) {
-          const { hash, ...userWithoutHash } = user.toObject();
-          const token = jwt.sign({ sub: user.id }, process.env.SECRET);
+          const { hash, ...userWithoutHash } = user.toObject()
+          const token = jwt.sign({ sub: user.id }, process.env.SECRET)
           return {
               ...userWithoutHash,
               token
@@ -36,32 +35,32 @@ async function authenticate({ username, password }) {
 }
 
 async function getAll() {
-    return await User.find().select('-hash');
+    return await User.find().select('-hash')
 }
 
 async function getById(id) {
-    return await User.findById(id).select('-hash');
+    return await User.findById(id).select('-hash')
 }
 
 async function create(userParam) {
     // validate
     if (await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+        throw 'Username "' + userParam.username + '" is already taken'
     }
 
-    const user = new User(userParam);
+    const user = new User(userParam)
 
     // hash password
     if (userParam.password) {
-        user.hash = bcrypt.hashSync(userParam.password, 10);
+        user.hash = bcrypt.hashSync(userParam.password, 10)
     }
 
     // save user
-    await user.save();
+    await user.save()
 }
 
 async function update(id, userParam) {
-    const user = await User.findById(id);
+    const user = await User.findById(id)
 
     // validate
     if (!user) throw 'User not found';
