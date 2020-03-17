@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 //app.use(jwt()) TODO: uncomment after testing is DONE
 app.use('/users', require('./users/user.controller'))
 app.use('/todolists', require('./todo_list/todolist.controller'))
+app.use('/tasks', require('./todo_list/tasks/task.controller'))
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`et ici aussi sur port = ${process.env.PORT}`)

@@ -3,20 +3,20 @@ const router = express.Router()
 const todoListService = require('./todolist.service')
 //routes
 router.post('/create', createTodoList)
-router.get('/:userId', getAll)
+router.get('/:userId', getAllTodoList)
 router.put('/:usedId/:listId', updateTodoList)
-router.delete('/:userId/:listId', deleteTodoList)
+router.delete('/:listId', deleteTodoList)
 
 module.exports = router
 
 function createTodoList(req, res, next) {
   console.log('createTodoList called')
-  todoListService.createList(req.body)
+  todoListService.create(req.body)
     .then(list => list ? res.json(list) : res.status(400).json({ message: 'Invalid list name'}))
     .catch(error => next(error))
 }
 
-function getAll(req, res, next) {
+function getAllTodoList(req, res, next) {
   console.log('getAll todolist called')
   todoListService.getAll(req.params.userId)
     .then(lists => lists ? res.json(lists) : res.status(500).json({ message: 'Unknown error'}))
@@ -31,8 +31,8 @@ function updateTodoList(req, res, next) {
 }
 
 function deleteTodoList(req, res, next) {
-  console.log('deleteTodoList called')
-  todoListService.delete(req.params)
-    .then(() => res.json({}))
+  console.log('deleteTodoList called: ' + req.params.listId)
+  todoListService.delete(req.params.listId)
+    .then((idRemoved) => res.json({idRemoved}))
     .catch(err => next(err))
 }

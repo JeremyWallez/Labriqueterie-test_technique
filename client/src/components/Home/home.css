@@ -1,0 +1,42 @@
+.navigation-bar {
+    border-right: #999 1px solid;
+    width: 20%;
+    height: 100%;
+    position: absolute;
+}
+
+.seizure {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-right: 1px solid black
+}
+
+.connecteurs {
+    position: absolute;
+    left: 25%;
+    top: 3%;
+    width: 80%;
+    height: 100%;
+}
+
+.connecteurs h1 {
+  color: red;
+}
+
+.btn-notif {
+    cursor: pointer;
+    border: none;
+}
+
+.btn-notif:hover {
+    transform: scale(1.1);
+}
+
+.case {
+    text-align: center;
+    width: 40%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin-top: 2%;
+}

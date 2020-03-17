@@ -8,16 +8,28 @@ module.exports = {
   delete: _delete
 }
 
-async function create({userId, title}) {
+async function create({userId, title, description}) {
   if (!userId || !title) {
-    throw "No userId or title provided for: create(todolist)"
+    throw "Invalid params for create(todolist)"
   }
   try {
     if (await TodoList.findOne({title})) {
       throw 'List name "' + title + '" is already taken'
     }
-    const todoList = new TodoList({userId: userId, title: title})
+    const todoList = new TodoList({userId: userId, title: title, description: description})
     await todoList.save()
+    return todoList
+  } catch (error) {
+    throw error
+  }
+}
+
+async function getAll(userId) {
+  if (!userId) {
+    throw "Invalid params for getAll(todolist)"
+  }
+  try {
+    return await TodoList.find({userId: userId})
   } catch (error) {
     throw error
   }
@@ -25,7 +37,7 @@ async function create({userId, title}) {
 
 async function update({userId, title}) {
   if (!userId || !title) {
-    throw "No userId or title provided for: update(todolist)"
+    throw "Invalid params for update(todolist)"
   }
   try {
     const todoList = TodoList.findOne({userId: userId, ttle: title})
@@ -40,23 +52,14 @@ async function update({userId, title}) {
   }
 }
 
-async function getAll(userId) {
-  if (!userId) {
-    throw "No userID provided for: getAll(todolist)"
+async function _delete(listId) {
+  if (!listId) {
+    throw "Invalid params for delete(todolist)"
   }
   try {
-    return await TodoList.find({userId: userId})
-  } catch (error) {
-    throw error
-  }
-}
-
-async function _delete({userId, listId}) {
-  if (!userId || !listId) {
-    throw "No userId or listId provided for: delete(todolist)"
-  }
-  try {
-    await TodoList.findByIdAndRemove({userId: userId, listId: listId})
+    console.log('awaiting remove of list')
+    await TodoList.findByIdAndRemove(listId)
+    return listId
   } catch (error) {
     throw error
   }

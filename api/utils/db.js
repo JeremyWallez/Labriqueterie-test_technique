@@ -9,7 +9,7 @@ mongoose.connect(process.env.mongoString || '', { useCreateIndex: true, useNewUr
   }
 });
 mongoose.Promise = global.Promise
-
+mongoose.set('useFindAndModify', false);
 module.exports = {
     User: require('../users/user.model'),
     TodoList: require('../todo_list/todolist.model'),

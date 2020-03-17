@@ -1,0 +1,24 @@
+heroku :
+jeremy.wallez@epitech.eu
+5GryRirsh~
+{
+lieu repo: ~/Job/Briqueterie/heroku_node
+https://rocky-earth-96276.herokuapp.com/ | https://git.heroku.com/rocky-earth-96276.git
+}
+j.wallez@yahoo.fr
+azerty55/
+{
+lieu repo: monrepo/react_app_heroku
+https://rocky-beyond-77003.herokuapp.com/ | https://git.heroku.com/rocky-beyond-77003.git
+
+probleme de push lié a : height: calc(195px + (#{$datepicker__item-size} / 2)); => src/home/component/datepicker.css ligne 281
+                       : // Resize for small screens
+  @media (max-width: 400px), (max-height: 550px) {
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+      width: 2rem;
+      line-height: 2rem;
+    }
+  } => src/home/componenent/datepicker.css ligne 617
+}
